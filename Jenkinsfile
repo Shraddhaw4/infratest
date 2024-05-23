@@ -40,5 +40,13 @@ pipeline {
                 sh 'terraform ${action} --auto-approve'
             }
         }
+        stage('Copy key') {
+            steps {
+                sh '''sudo chmod 600 /home/ec2-user/.ssh/aws_keys_pairs_3.pem
+                sudo chown ec2-user:ec2-user /home/ec2-user/.ssh/aws_keys_pairs_3.pem
+                cp config /home/ec2-user/.ssh/config
+                '''
+            }
+        }
     }
 }
