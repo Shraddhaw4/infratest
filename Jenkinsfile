@@ -9,17 +9,6 @@ pipeline {
         choice(choices:['apply','destroy'], description: 'Users Choice', name: 'action')
     }
     stages {
-        stage('Copy key file') {
-             steps {
-                    withCredentials([sshUserPrivateKey(
-                         credentialsId: 'ssh-key',
-                         keyFileVariable: 'sshkey')])
-                    {
-                         sh 'pwd'
-                         sh 'cp "$sshkey" Jenkins-Server.pem'
-                    }
-             }
-        }
        stage('Init') {
             steps {
                 sh 'terraform init'
