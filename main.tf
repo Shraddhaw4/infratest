@@ -39,7 +39,7 @@ resource "aws_key_pair" "generated_key" {
 }
 
 resource "local_file" "cloud_pem" {
-  filename = "./aws_keys_pairs_3.pem"
+  filename = "/home/ec2-user/.ssh/aws_keys_pairs_3.pem"
   content  = tls_private_key.terraform_generated_private_key.private_key_pem
 }
 
