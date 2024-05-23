@@ -15,6 +15,7 @@ pipeline {
                          credentialsId: 'ssh-key',
                          keyFileVariable: 'sshkey')])
                     {
+                         sh 'pwd'
                          sh 'cp "$sshkey" Jenkins-Server.pem'
                     }
              }
