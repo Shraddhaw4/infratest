@@ -1,0 +1,4 @@
+Host *
+        StrictHostKeyChecking no
+        User ec2-user
+        IdentityFile /home/ec2-user/.ssh/aws_keys_pairs_3.pem
