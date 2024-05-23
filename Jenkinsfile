@@ -12,10 +12,10 @@ pipeline {
         stage('Copy key file') {
              steps {
                     withCredentials([sshUserPrivateKey(
-                         credentialsId: 'creds',
-                         keyFileVariable: 'ssh-key')])
+                         credentialsId: 'ssh-key',
+                         keyFileVariable: 'sshkey')])
                     {
-                         sh 'cp "$ssh-key" Jenkins-Server.pem'
+                         sh 'cp "$sshkey" Jenkins-Server.pem'
                     }
              }
         }
