@@ -40,11 +40,5 @@ pipeline {
                 sh 'terraform ${action} --auto-approve'
             }
         }
-
-        stage('Copy the key to ssh folder') {
-            steps {
-                sh 'cp aws_keys_pairs_3.pem /home/ec2-user/.ssh/aws_keys_pairs_3.pem'
-            }
-        }
     }
 }
