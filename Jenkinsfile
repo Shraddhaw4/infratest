@@ -42,9 +42,11 @@ pipeline {
         }
         stage('Copy key') {
             steps {
-                sh '''sudo chmod 600 /home/ec2-user/.ssh/aws_keys_pairs_3.pem
-                sudo chown ec2-user:ec2-user /home/ec2-user/.ssh/aws_keys_pairs_3.pem
-                cp config /home/ec2-user/.ssh/config
+                sh '''cd ~/.ssh
+                sudo chmod 600 *.pem
+                sudo chown ec2-user:ec2-user aws_keys_pairs_3.pem
+                echo -e 'Host *\n\tStrictHostKeyChecking no\n\tUser ec2-user\nIdentityFile /home/ec2-user/.ssh/aws_keys_pairs_3.pem' > config
+                sudo chmod 600 config
                 '''
             }
         }
