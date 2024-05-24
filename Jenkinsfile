@@ -42,7 +42,8 @@ pipeline {
         }
         stage('Copy key') {
             steps {
-                sh '''cd /home/ec2-user/.ssh
+                sh '''sudo su - ec2-user
+                cd /home/ec2-user/.ssh
                 sudo chmod 600 *.pem
                 sudo chown ec2-user:ec2-user aws_keys_pairs_3.pem
                 echo -e 'Host *\n\tStrictHostKeyChecking no\n\tUser ec2-user\nIdentityFile /home/ec2-user/.ssh/aws_keys_pairs_3.pem' > config
